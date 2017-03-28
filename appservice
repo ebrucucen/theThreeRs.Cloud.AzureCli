@@ -1,0 +1,106 @@
+==============================================
+[root@centos-linux-7 ~]# az group create --name AppServiceDemoRG --location northeurope --tags AppService{
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/AppServiceDemoRG",
+  "location": "northeurope",
+  "managedBy": null,
+  "name": "AppServiceDemoRG",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": {
+    "AppService": ""
+  }
+}
+==============================================
+[root@centos-linux-7 ~]# az appservice plan create --sku FREE --resource-group AppServiceDemoRG --name AppServiceDemoFreePlan --location northeurope --number-of-workers 2
+{
+  "adminSiteName": null,
+  "geoRegion": "North Europe",
+  "hostingEnvironmentProfile": null,
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/AppServiceDemoRG/providers/Microsoft.Web/serverfarms/AppServiceDemoFreePlan",
+  "kind": "app",
+  "location": "North Europe",
+  "maximumNumberOfWorkers": 1,
+  "name": "AppServiceDemoFreePlan",
+  "numberOfSites": 0,
+  "perSiteScaling": false,
+  "reserved": false,
+  "resourceGroup": "AppServiceDemoRG",
+  "serverFarmWithRichSkuName": "AppServiceDemoFreePlan",
+  "sku": {
+    "capacity": 0,
+    "family": "F",
+    "name": "F1",
+    "size": "F1",
+    "tier": "Free"
+  },
+  "status": "Pending",
+  "subscription": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx",
+  "tags": null,
+  "type": "Microsoft.Web/serverfarms",
+  "workerTierName": null
+}
+==============================================
+
+
+[root@centos-linux-7 ~]#  az appservice web create --resource-group AppServiceDemoRG --plan AppServiceDemoFreePlan --name AppServiceDemo20170328
+{
+  "availabilityState": "DisasterRecoveryMode",
+  "clientAffinityEnabled": true,
+  "clientCertEnabled": false,
+  "cloningInfo": null,
+  "containerSize": 0,
+  "defaultHostName": "appservicedemo20170328.azurewebsites.net",
+  "enabled": true,
+  "enabledHostNames": [
+    "appservicedemo20170328.azurewebsites.net",
+    "appservicedemo20170328.scm.azurewebsites.net"
+  ],
+  "gatewaySiteName": null,
+  "hostNameSslStates": [
+    {
+      "name": "appservicedemo20170328.azurewebsites.net",
+      "sslState": "Disabled",
+      "thumbprint": null,
+      "toUpdate": null,
+      "virtualIp": null
+    },
+    {
+      "name": "appservicedemo20170328.scm.azurewebsites.net",
+      "sslState": "Disabled",
+      "thumbprint": null,
+      "toUpdate": null,
+      "virtualIp": null
+    }
+  ],
+  "hostNames": [
+    "appservicedemo20170328.azurewebsites.net"
+  ],
+  "hostNamesDisabled": false,
+  "hostingEnvironmentProfile": null,
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/AppServiceDemoRG/providers/Microsoft.Web/sites/AppServiceDemo20170328",
+  "isDefaultContainer": null,
+  "kind": "app",
+  "lastModifiedTimeUtc": "2017-03-28T15:03:00.330000",
+  "location": "North Europe",
+  "maxNumberOfWorkers": null,
+  "microService": "WebSites",
+  "name": "AppServiceDemo20170328",
+  "outboundIpAddresses": "52.178.212.17,13.74.152.197,40.69.212.45,52.169.234.23,52.169.232.66",
+  "premiumAppDeployed": null,
+  "repositorySiteName": "AppServiceDemo20170328",
+  "resourceGroup": "AppServiceDemoRG",
+  "scmSiteAlsoStopped": false,
+  "serverFarmId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/AppServiceDemoRG/providers/Microsoft.Web/serverfarms/AppServiceDemoFreePlan",
+  "siteConfig": null,
+  "siteName": "AppServiceDemo20170328",
+  "state": "Running",
+  "tags": null,
+  "targetSwapSlot": null,
+  "trafficManagerHostNames": null,
+  "type": "Microsoft.Web/sites",
+  "usageState": "Exceeded"
+}
+========================================
+
+
